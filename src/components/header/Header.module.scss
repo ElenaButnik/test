@@ -1,0 +1,77 @@
+@import "../variables.scss";
+
+.Header {
+  background-color: #ffff;
+  max-width: 2560px;
+  margin: 0 auto;
+}
+.Container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 13px 16px 13px 16px;
+  color: $black;
+
+  @media screen and (min-width: 360px) {
+    max-width: 360px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1024px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  @media screen and (min-width: 2560px) {
+    max-width: 1170px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.Title {
+  padding-right: 14px;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 1.63;
+
+  @media screen and (min-width: 768px) {
+    margin-right: auto;
+  }
+}
+
+.List {
+  display: flex;
+}
+
+.About {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 34px;
+  border-radius: 80px;
+  background-color: $primary;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.Link:not(:last-child) {
+  padding-right: 10px;
+}
+.SignUp {
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.About:hover,
+.About:focus,
+.SignUp:hover,
+.SignUp:focus {
+  background-color: #ffe302;
+}
