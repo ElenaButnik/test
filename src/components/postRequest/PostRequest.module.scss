@@ -162,6 +162,9 @@
 }
 .UploaderError {
   @extend .Uploader;
+  margin-bottom: 0;
+  border: 2px solid #cb3d40;
+  border-radius: 4px;
   .UploaderError & label {
     border: 2px solid #cb3d40;
   }

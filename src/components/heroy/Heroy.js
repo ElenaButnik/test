@@ -1,7 +1,6 @@
-import { Button } from "../button/Button";
 import s from "./Heroy.module.scss";
 
-export const Heroy = (params) => {
+export const Heroy = () => {
   return (
     <section className={s.Container}>
       <h1 className={s.Title}>Test assignment for front-end developer</h1>
@@ -12,9 +11,9 @@ export const Heroy = (params) => {
         mind. They should also be excited to learn, as the world of Front-End
         Development keeps evolving.
       </p>
-      <Button>
-        <a href="#signUp">Sign up</a>
-      </Button>
+      <a href="#signUp" className={s.About}>
+        Sign up
+      </a>
     </section>
   );
 };

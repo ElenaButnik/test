@@ -1,5 +1,4 @@
 import { ReactComponent as HeaderIcon } from "../../images/header.svg";
-import { Button } from "../button/Button";
 import s from "./Header.module.scss";
 
 export const Header = () => {
@@ -15,8 +14,8 @@ export const Header = () => {
             </a>
           </li>
           <li className={s.Link}>
-            <a href="#signUp" className={s.SignUp}>
-              <Button> Sign up</Button>
+            <a href="#signUp" className={s.About}>
+              Sign up
             </a>
           </li>
         </ul>

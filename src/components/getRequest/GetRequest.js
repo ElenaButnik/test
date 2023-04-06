@@ -38,7 +38,7 @@ export const GetRequest = () => {
       <section className={s.Container}>
         <h2 className={s.Title}>Working with GET request</h2>
 
-        <ul className={s.List}>
+        <ul className={s.List} id="users">
           {status === "pending" ? (
             <ColorRing
               visible={true}
@@ -64,7 +64,7 @@ export const GetRequest = () => {
             <Button
               type="button"
               currentPage={currentPage}
-              onClick={() => onClickPage(Number(currentPage) + 1)}
+              onClickPage={onClickPage}
               style={{ width: 120 }}
             >
               Show more

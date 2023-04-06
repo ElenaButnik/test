@@ -13,15 +13,19 @@ export const PostRequest = ({ pageScroll }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [photo, setPhoto] = useState("Upload your photo");
+  const [photo, setPhoto] = useState("");
   const [position_id, setPosition] = useState("");
   const [nameDirty, setNameDirty] = useState(false);
   const [phoneDirty, setPhoneDirty] = useState(false);
   const [emailDirty, setEmailDirty] = useState(false);
+  const [photoDirty, setPhotoDirty] = useState(false);
   const [nameError, setNameError] = useState("Please enter a name");
   const [phoneError, setPhoneError] = useState("Please enter a phone number");
   const [emailError, setEmailError] = useState(
     "Please enter your email address"
+  );
+  const [photoError, setPhotoError] = useState(
+    "Please upload file less than 5mb"
   );
   const [success, setSucess] = useState(false);
 
@@ -40,7 +44,9 @@ export const PostRequest = ({ pageScroll }) => {
       case "phone":
         setPhoneDirty(true);
         break;
-
+      case "photo":
+        setPhotoDirty(true);
+        break;
       default:
         console.log(e.target.name);
     }
@@ -80,14 +86,18 @@ export const PostRequest = ({ pageScroll }) => {
   };
 
   const changePhoto = (e) => {
-    const file = e.size;
+    const file = e?.size;
     if (file > 5242880) {
-      alert("Please upload file less than 5mb");
+      setPhotoError("Please upload file less than 5mb");
     } else {
       setPhoto(e);
+      setPhotoError("");
     }
   };
-  const isFormEmpty = !name || !email || !phone || !position_id || !photo;
+
+  const isFormEmpty = !photo || !name || !email || !phone || !position_id;
+  console.log(photoError);
+  console.log(photoDirty);
 
   const createNewUser = () => {
     if (isFormEmpty) {
@@ -100,7 +110,7 @@ export const PostRequest = ({ pageScroll }) => {
       setName("");
       setPhone("");
       setPosition("");
-      setPhoto("");
+      setPhoto("Upload your photo");
     }
   };
 
@@ -191,12 +201,15 @@ export const PostRequest = ({ pageScroll }) => {
                 );
               })}
           </div>
-          <div className={s.UploaderError}>
+          <div
+            className={photoDirty && photoError ? s.UploaderError : s.Uploader}
+          >
             <input
               className={s.InputFile}
               onChange={(e) => changePhoto(e.target.files[0])}
               type="file"
               name="photo"
+              onBlur={(e) => blurHandler(e)}
               alt="Choose file to upload"
               id="photo"
               accept="image/jpeg, image/png image/jpg"
@@ -206,10 +219,15 @@ export const PostRequest = ({ pageScroll }) => {
             <label htmlFor="photo">
               <div className={s.PhotoButton}>Upload</div>
               <div className={s.PhotoLabel}>
-                {photo ? photo?.name?.slice(0, 10) : <p>Upload your photo</p>}
+                {photo ? photo?.name?.slice(0, 20) : <p>Upload your photo</p>}
               </div>
             </label>
           </div>
+          {photoDirty && photoError ? (
+            <p className={s.TextError} style={{ marginBottom: "50px" }}>
+              {photoError}
+            </p>
+          ) : null}
           {isFormEmpty ? (
             <Button
               onClickPage={() =>

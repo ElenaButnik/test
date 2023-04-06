@@ -7,11 +7,16 @@ export const GetCard = ({
 }) => {
   return (
     <li key={id} className={s.Item} id="users">
-      {photo ? (
-        <img src={photo ? photo : Vector} alt="face" className={s.Img} />
-      ) : (
-        Vector
-      )}
+      {
+        <img
+          src={photo}
+          onError={(e) => {
+            if (e.target.src !== Vector) e.target.src = Vector;
+          }}
+          alt="face"
+          className={s.Img}
+        />
+      }
 
       <EllipsisText text={name} className={s.Name} length={25} />
       <EllipsisText className={s.Name} text={position} length={25} />
