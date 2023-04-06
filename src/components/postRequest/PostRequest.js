@@ -96,14 +96,11 @@ export const PostRequest = ({ pageScroll }) => {
   };
 
   const isFormEmpty = !photo || !name || !email || !phone || !position_id;
-  console.log(photoError);
-  console.log(photoDirty);
 
   const createNewUser = () => {
     if (isFormEmpty) {
       alert("Please enter all required fields");
     } else {
-      pageScroll();
       dispatch(addThunkData({ name, email, phone, position_id, photo }));
       setSucess(true);
       setEmail("");
@@ -111,6 +108,7 @@ export const PostRequest = ({ pageScroll }) => {
       setPhone("");
       setPosition("");
       setPhoto("Upload your photo");
+      pageScroll();
     }
   };
 
